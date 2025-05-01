@@ -1,4 +1,5 @@
 #pragma once
+#pragma warning(disable: 4324)  // Disable structure padding warning
 #include <string>
 
 // ============= Types for enum+union approach =============
@@ -11,7 +12,7 @@ enum class DataType {
 };
 
 // Union data structure with type discrimination
-struct UnionData {
+struct alignas(64) UnionData {
     DataType type;
     union {
         int a_value;

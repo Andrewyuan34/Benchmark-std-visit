@@ -22,6 +22,7 @@ static void BM_StdVisit(benchmark::State& state) {
             sum += std::visit(visitor, var);
         }
         benchmark::DoNotOptimize(sum);
+        benchmark::ClobberMemory();     
     }
     state.SetItemsProcessed(state.iterations() * dataSize);
 }
@@ -43,6 +44,7 @@ static void BM_StdGetIf(benchmark::State& state) {
             }
         }
         benchmark::DoNotOptimize(sum);
+        benchmark::ClobberMemory();    
     }
     state.SetItemsProcessed(state.iterations() * dataSize);
 }
@@ -66,6 +68,7 @@ static void BM_EnumUnion(benchmark::State& state) {
             }
         }
         benchmark::DoNotOptimize(sum);
+        benchmark::ClobberMemory();    
     }
     state.SetItemsProcessed(state.iterations() * dataSize);
 }
@@ -79,14 +82,30 @@ static void BM_VirtualCall(benchmark::State& state) {
             sum += obj->getValue();
         }
         benchmark::DoNotOptimize(sum);
+        benchmark::ClobberMemory();
     }
     state.SetItemsProcessed(state.iterations() * dataSize);
 }
 
 // Register all benchmarks
-BENCHMARK(BM_StdVisit);
-BENCHMARK(BM_StdGetIf);
-BENCHMARK(BM_EnumUnion);
-BENCHMARK(BM_VirtualCall);
+BENCHMARK(BM_StdVisit)
+->Repetitions(10)
+->ReportAggregatesOnly(true)
+->Unit(benchmark::kMicrosecond);
+
+BENCHMARK(BM_StdGetIf)
+->Repetitions(10)
+->ReportAggregatesOnly(true)
+->Unit(benchmark::kMicrosecond);
+
+BENCHMARK(BM_EnumUnion)
+->Repetitions(10)
+->ReportAggregatesOnly(true)
+->Unit(benchmark::kMicrosecond);
+
+BENCHMARK(BM_VirtualCall)
+->Repetitions(10)
+->ReportAggregatesOnly(true)
+->Unit(benchmark::kMicrosecond);
 
 BENCHMARK_MAIN();
