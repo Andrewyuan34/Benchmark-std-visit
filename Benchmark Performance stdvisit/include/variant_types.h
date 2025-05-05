@@ -1,10 +1,7 @@
 #pragma once
 #include <variant>
 #include <string>
-
-#pragma once
-#include <variant>
-#include <string>
+#include "macros.h"
 
 // ============= Common Types for std::variant approach =============
 struct Type1 { int get() const; };
@@ -28,11 +25,8 @@ struct Type18 { int get() const; };
 struct Type19 { int get() const; };
 struct Type20 { int get() const; };
 
-// ============= Toggle: Choose number of types =============
-// Set TYPE_COUNT to 3, 10, or 20
-#ifndef TYPE_COUNT
-#define TYPE_COUNT 20
-#endif
+
+
 
 #if TYPE_COUNT == 3
 using VariantType = std::variant<Type1, Type2, Type3>;

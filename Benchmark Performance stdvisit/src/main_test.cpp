@@ -152,16 +152,115 @@ static void BM_EnumUnion(benchmark::State& state) {
         double sum = 0.0;
         for (const auto& item : data) {
             switch (item.type) {
-            case DataType::Type_A:
-                sum += static_cast<double>(item.a_value);
+#if TYPE_COUNT == 3
+            case DataType::Type1:
+                sum += item.get();
                 break;
-            case DataType::Type_B:
-                sum += item.b_value;
+            case DataType::Type2:
+                sum += item.get();
                 break;
-            case DataType::Type_C:
-                sum += std::stod(item.c_value);
+            case DataType::Type3:
+                sum += item.get();
                 break;
             }
+#elif TYPE_COUNT == 10
+            case DataType::Type1:
+                sum += item.get();
+                break;
+            case DataType::Type2:
+                sum += item.get();
+                break;
+            case DataType::Type3:
+                sum += item.get();
+                break;
+            case DataType::Type4:
+                sum += item.get();
+                break;
+            case DataType::Type5:
+                sum += item.get();
+                break;
+            case DataType::Type6:
+                sum += item.get();
+                break;
+            case DataType::Type7:
+                sum += item.get();
+                break;
+            case DataType::Type8:
+                sum += item.get();
+                break;
+            case DataType::Type9:
+                sum += item.get();
+                break;
+            case DataType::Type10:
+                sum += item.get();
+                break;
+            }
+#elif TYPE_COUNT == 20
+            case DataType::Type1:
+                sum += item.get();
+                break;
+            case DataType::Type2:
+                sum += item.get();
+                break;
+            case DataType::Type3:
+                sum += item.get();
+                break;
+            case DataType::Type4:
+                sum += item.get();
+                break;
+            case DataType::Type5:
+                sum += item.get();
+                break;
+            case DataType::Type6:
+                sum += item.get();
+                break;
+            case DataType::Type7:
+                sum += item.get();
+                break;
+            case DataType::Type8:
+                sum += item.get();
+                break;
+            case DataType::Type9:
+                sum += item.get();
+                break;
+            case DataType::Type10:
+                sum += item.get();
+                break;
+            case DataType::Type11:
+                sum += item.get();
+                break;
+            case DataType::Type12:
+                sum += item.get();
+                break;
+            case DataType::Type13:
+                sum += item.get();
+                break;
+            case DataType::Type14:
+                sum += item.get();
+                break;
+            case DataType::Type15:
+                sum += item.get();
+                break;
+            case DataType::Type16:
+                sum += item.get();
+                break;
+            case DataType::Type17:
+                sum += item.get();
+                break;
+            case DataType::Type18:
+                sum += item.get();
+                break;
+            case DataType::Type19:
+                sum += item.get();
+                break;
+            case DataType::Type20:
+                sum += item.get();
+                break;
+            }
+#else
+#error "Unsupported TYPE_COUNT. Please set TYPE_COUNT to 3, 10, or 20."
+#endif
+
         }
         benchmark::DoNotOptimize(sum);
         benchmark::ClobberMemory();    
@@ -187,21 +286,21 @@ static void BM_VirtualCall(benchmark::State& state) {
 BENCHMARK(BM_StdVisit)
 ->Repetitions(10)
 ->ReportAggregatesOnly(true)
-->Unit(benchmark::kSecond);
+->Unit(benchmark::kMillisecond);
 
 BENCHMARK(BM_StdGetIf)
 ->Repetitions(10)
 ->ReportAggregatesOnly(true)
-->Unit(benchmark::kSecond);
+->Unit(benchmark::kMillisecond);
 
 BENCHMARK(BM_EnumUnion)
 ->Repetitions(10)
 ->ReportAggregatesOnly(true)
-->Unit(benchmark::kSecond);
+->Unit(benchmark::kMillisecond);
 
 BENCHMARK(BM_VirtualCall)
 ->Repetitions(10)
 ->ReportAggregatesOnly(true)
-->Unit(benchmark::kSecond);
+->Unit(benchmark::kMillisecond);
 
 BENCHMARK_MAIN();

@@ -2,20 +2,83 @@
 
 // ============= Types for virtual polymorphism approach =============
 
-DerivedA::DerivedA(int v) : value(v) {}
 
-double DerivedA::getValue() const {
-    return static_cast<double>(value);
+int Derived1::getValue() const {
+    return 1;
 }
 
-DerivedB::DerivedB(double v) : value(v) {}
-
-double DerivedB::getValue() const {
-    return value;
+int Derived2::getValue() const {
+    return 1;
 }
 
-DerivedC::DerivedC(std::string v) : value(std::move(v)) {}
+int Derived3::getValue() const {
+    return 1;
+}
 
-double DerivedC::getValue() const {
-    return std::stod(value);
+int Derived4::getValue() const {
+    return 1;
+}
+
+int Derived5::getValue() const {
+    return 1;
+}
+
+int Derived6::getValue() const {
+    return 1;
+}
+
+int Derived7::getValue() const {
+    return 1;
+}
+
+int Derived8::getValue() const {
+    return 1;
+}
+
+int Derived9::getValue() const {
+    return 1;
+}
+
+int Derived10::getValue() const {
+    return 1;
+}
+
+int Derived11::getValue() const {
+    return 1;
+}
+
+int Derived12::getValue() const {
+    return 1;
+}
+
+int Derived13::getValue() const {
+    return 1;
+}
+
+int Derived14::getValue() const {
+    return 1;
+}
+
+int Derived15::getValue() const {
+    return 1;
+}
+
+int Derived16::getValue() const {
+    return 1;
+}
+
+int Derived17::getValue() const {
+    return 1;
+}
+
+int Derived18::getValue() const {
+    return 1;
+}
+
+int Derived19::getValue() const {
+    return 1;
+}
+
+int Derived20::getValue() const {
+    return 1;
 }
