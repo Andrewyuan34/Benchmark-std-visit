@@ -31,49 +31,49 @@ struct Type20 { int get() const; };
 #if TYPE_COUNT == 3
 using VariantType = std::variant<Type1, Type2, Type3>;
 struct Visitor {
-    double operator()(const Type1& a) const;
-    double operator()(const Type2& b) const;
-    double operator()(const Type3& c) const;
+    int operator()(const Type1& a) const;
+    int operator()(const Type2& a) const;
+    int operator()(const Type3& a) const;
 };
 #elif TYPE_COUNT == 10
 using VariantType = std::variant<Type1, Type2, Type3, Type4, Type5, Type6, Type7, Type8, Type9, Type10>;
 struct Visitor {
-    double operator()(const Type1& a) const;
-    double operator()(const Type2& b) const;
-    double operator()(const Type3& c) const;
-    double operator()(const Type4& d) const;
-    double operator()(const Type5& e) const;
-    double operator()(const Type6& f) const;
-    double operator()(const Type7& g) const;
-    double operator()(const Type8& h) const;
-    double operator()(const Type9& i) const;
-    double operator()(const Type10& j) const;
+    int operator()(const Type1& a) const;
+    int operator()(const Type2& a) const;
+    int operator()(const Type3& a) const;
+    int operator()(const Type4& a) const;
+    int operator()(const Type5& a) const;
+    int operator()(const Type6& a) const;
+    int operator()(const Type7& a) const;
+    int operator()(const Type8& a) const;
+    int operator()(const Type9& a) const;
+    int operator()(const Type10& a) const;
 };
 #elif TYPE_COUNT == 20
 using VariantType = std::variant<
     Type1, Type2, Type3, Type4, Type5, Type6, Type7, Type8, Type9, Type10,
     Type11, Type12, Type13, Type14, Type15, Type16, Type17, Type18, Type19, Type20>;
 struct Visitor {
-    double operator()(const Type1& a) const;
-    double operator()(const Type2& b) const;
-    double operator()(const Type3& c) const;
-    double operator()(const Type4& d) const;
-    double operator()(const Type5& e) const;
-    double operator()(const Type6& f) const;
-    double operator()(const Type7& g) const;
-    double operator()(const Type8& h) const;
-    double operator()(const Type9& i) const;
-    double operator()(const Type10& j) const;
-    double operator()(const Type11& k) const;
-    double operator()(const Type12& l) const;
-    double operator()(const Type13& m) const;
-    double operator()(const Type14& n) const;
-    double operator()(const Type15& o) const;
-    double operator()(const Type16& p) const;
-    double operator()(const Type17& q) const;
-    double operator()(const Type18& r) const;
-    double operator()(const Type19& s) const;
-    double operator()(const Type20& t) const;
+    int operator()(const Type1& a) const;
+    int operator()(const Type2& a) const;
+    int operator()(const Type3& a) const;
+    int operator()(const Type4& a) const;
+    int operator()(const Type5& a) const;
+    int operator()(const Type6& a) const;
+    int operator()(const Type7& a) const;
+    int operator()(const Type8& a) const;
+    int operator()(const Type9& a) const;
+    int operator()(const Type10& a) const;
+    int operator()(const Type11& a) const;
+    int operator()(const Type12& a) const;
+    int operator()(const Type13& a) const;
+    int operator()(const Type14& a) const;
+    int operator()(const Type15& a) const;
+    int operator()(const Type16& a) const;
+    int operator()(const Type17& a) const;
+    int operator()(const Type18& a) const;
+    int operator()(const Type19& a) const;
+    int operator()(const Type20& a) const;
 };
 #else
 #error "Unsupported TYPE_COUNT. Please set TYPE_COUNT to 3, 10, or 20."

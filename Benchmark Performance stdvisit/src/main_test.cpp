@@ -9,7 +9,7 @@
 #include <benchmark/benchmark.h>
 #include "../include/random_generation.h"
 
-static constexpr size_t dataSize = 1'000'000;
+static constexpr size_t dataSize = 10'000'000;
 
 // ============= Benchmarks =============
 static void BM_StdVisit(benchmark::State& state) {
@@ -17,12 +17,11 @@ static void BM_StdVisit(benchmark::State& state) {
     Visitor visitor;
 
     for (auto _ : state) {
-        double sum = 0.0;
+        int sum = 0;
         for (const auto& var : variants) {
             sum += std::visit(visitor, var);
         }
         benchmark::DoNotOptimize(sum);
-        benchmark::ClobberMemory();     
     }
     state.SetItemsProcessed(state.iterations() * dataSize);
 }
@@ -31,7 +30,7 @@ static void BM_StdGetIf(benchmark::State& state) {
     auto variants = generateRandomVariants(dataSize, 42);
 
     for (auto _ : state) {
-        double sum = 0.0;
+        int sum = 0;
         for (const auto& var : variants) {
 #if TYPE_COUNT == 3
             if (auto p1 = std::get_if<Type1>(&var)) {
@@ -140,7 +139,6 @@ static void BM_StdGetIf(benchmark::State& state) {
 #endif
         }
         benchmark::DoNotOptimize(sum);
-        benchmark::ClobberMemory();
     }
     state.SetItemsProcessed(state.iterations() * dataSize);
 }
@@ -149,7 +147,7 @@ static void BM_EnumUnion(benchmark::State& state) {
     auto data = generateRandomUnions(dataSize, 42);
 
     for (auto _ : state) {
-        double sum = 0.0;
+        int sum = 0;
         for (const auto& item : data) {
             switch (item.type) {
 #if TYPE_COUNT == 3
@@ -263,7 +261,6 @@ static void BM_EnumUnion(benchmark::State& state) {
 
         }
         benchmark::DoNotOptimize(sum);
-        benchmark::ClobberMemory();    
     }
     state.SetItemsProcessed(state.iterations() * dataSize);
 }
@@ -272,12 +269,11 @@ static void BM_VirtualCall(benchmark::State& state) {
     auto objects = generateRandomPolymorphic(dataSize, 42);
 
     for (auto _ : state) {
-        double sum = 0.0;
+        int sum = 0;
         for (const auto& obj : objects) {
             sum += obj->getValue();
         }
         benchmark::DoNotOptimize(sum);
-        benchmark::ClobberMemory();
     }
     state.SetItemsProcessed(state.iterations() * dataSize);
 }

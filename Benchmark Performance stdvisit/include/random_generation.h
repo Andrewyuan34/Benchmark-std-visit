@@ -15,6 +15,7 @@ inline std::vector<VariantType> generateRandomVariants(size_t count, unsigned se
 
     std::mt19937 gen(seed);
 
+
 #if TYPE_COUNT == 3
     std::uniform_int_distribution<> type_dist(0, 2);
     for (size_t i = 0; i < count; ++i) {
@@ -77,16 +78,18 @@ inline std::vector<UnionData> generateRandomUnions(size_t count, unsigned seed) 
     data.reserve(count);
 
     std::mt19937 gen(seed);
-    std::uniform_int_distribution<> type_dist(0, 2);
-    std::uniform_real_distribution<> value_dist(0.0, 1000.0);
 
+#if TYPE_COUNT == 3
+    std::uniform_int_distribution<> type_dist(0, 2);
     for (size_t i = 0; i < count; ++i) {
         switch (type_dist(gen)) {
-#if TYPE_COUNT == 3
         case 0: data.emplace_back(DataType::Type1); break;
         case 1: data.emplace_back(DataType::Type2); break;
         case 2: data.emplace_back(DataType::Type3); break;
 #elif TYPE_COUNT == 10
+    std::uniform_int_distribution<> type_dist(0, 9);
+    for (size_t i = 0; i < count; ++i) {
+        switch (type_dist(gen)) {
         case 0: data.emplace_back(DataType::Type1); break;
         case 1: data.emplace_back(DataType::Type2); break;
         case 2: data.emplace_back(DataType::Type3); break;
@@ -98,6 +101,9 @@ inline std::vector<UnionData> generateRandomUnions(size_t count, unsigned seed) 
         case 8: data.emplace_back(DataType::Type9); break;
         case 9: data.emplace_back(DataType::Type10); break;
 #elif TYPE_COUNT == 20
+    std::uniform_int_distribution<> type_dist(0, 19);
+    for (size_t i = 0; i < count; ++i) {
+        switch (type_dist(gen)) {
         case 0: data.emplace_back(DataType::Type1); break;
         case 1: data.emplace_back(DataType::Type2); break;
         case 2: data.emplace_back(DataType::Type3); break;
@@ -131,16 +137,18 @@ inline std::vector<std::unique_ptr<BaseType>> generateRandomPolymorphic(size_t c
     objects.reserve(count);
 
     std::mt19937 gen(seed);
-    std::uniform_int_distribution<> type_dist(0, 2);
-    std::uniform_real_distribution<> value_dist(0.0, 1000.0);
 
+#if TYPE_COUNT == 3
+    std::uniform_int_distribution<> type_dist(0, 2);
     for (size_t i = 0; i < count; ++i) {
         switch (type_dist(gen)) {
-#if TYPE_COUNT == 3
         case 0: objects.push_back(std::make_unique<Derived1>()); break;
         case 1: objects.push_back(std::make_unique<Derived2>()); break;
         case 2: objects.push_back(std::make_unique<Derived3>()); break;
 #elif TYPE_COUNT == 10
+    std::uniform_int_distribution<> type_dist(0, 9);
+    for (size_t i = 0; i < count; ++i) {
+        switch (type_dist(gen)) {
         case 0: objects.push_back(std::make_unique<Derived1>()); break;
         case 1: objects.push_back(std::make_unique<Derived2>()); break;
         case 2: objects.push_back(std::make_unique<Derived3>()); break;
@@ -152,6 +160,9 @@ inline std::vector<std::unique_ptr<BaseType>> generateRandomPolymorphic(size_t c
         case 8: objects.push_back(std::make_unique<Derived9>()); break;
         case 9: objects.push_back(std::make_unique<Derived10>()); break;
 #elif TYPE_COUNT == 20
+    std::uniform_int_distribution<> type_dist(0, 19);
+    for (size_t i = 0; i < count; ++i) {
+        switch (type_dist(gen)) {
         case 0: objects.push_back(std::make_unique<Derived1>()); break;
         case 1: objects.push_back(std::make_unique<Derived2>()); break;
         case 2: objects.push_back(std::make_unique<Derived3>()); break;

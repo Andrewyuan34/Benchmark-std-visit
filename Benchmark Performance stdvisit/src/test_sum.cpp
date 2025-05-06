@@ -4,19 +4,19 @@
 
 static constexpr size_t dataSize = 10'000'000;
 
-double computeStdVisitSum() {
+int computeStdVisitSum() {
     auto variants = generateRandomVariants(dataSize, 42);
     Visitor visitor;
-    double sum = 0.0;
+    int sum = 0;
     for (const auto& var : variants) {
         sum += std::visit(visitor, var);
     }
     return sum;
 }
 
-double computeStdGetIfSum() {
+int computeStdGetIfSum() {
     auto variants = generateRandomVariants(dataSize, 42);
-    double sum = 0.0;
+    int sum = 0;
     for (const auto& var : variants) {
 #if TYPE_COUNT == 3
         if (auto p1 = std::get_if<Type1>(&var)) {
@@ -127,9 +127,9 @@ double computeStdGetIfSum() {
     return sum;
 }
 
-double computeEnumUnionSum() {
+int computeEnumUnionSum() {
     auto data = generateRandomUnions(dataSize, 42);
-    double sum = 0.0;
+    int sum = 0;
     for (const auto& item : data) {
         switch (item.type) {
 #if TYPE_COUNT == 3
@@ -242,9 +242,9 @@ double computeEnumUnionSum() {
     return sum;
 }
 
-double computeVirtualCallSum() {
+int computeVirtualCallSum() {
     auto objects = generateRandomPolymorphic(dataSize, 42);
-    double sum = 0.0;
+    int sum = 0;
     for (const auto& obj : objects) {
         sum += obj->getValue();
     }
@@ -252,17 +252,17 @@ double computeVirtualCallSum() {
 }
 
 void compareSums() {
-    double sum1 = computeStdVisitSum();
-    double sum2 = computeStdGetIfSum();
-    double sum3 = computeEnumUnionSum();
-    double sum4 = computeVirtualCallSum();
+    int sum1 = computeStdVisitSum();
+    int sum2 = computeStdGetIfSum();
+    int sum3 = computeEnumUnionSum();
+    int sum4 = computeVirtualCallSum();
 
     std::cout << "StdVisit sum: " << sum1 << "\n";
     std::cout << "StdGetIf sum: " << sum2 << "\n";
     std::cout << "EnumUnion sum: " << sum3 << "\n";
     std::cout << "VirtualCall sum: " << sum4 << "\n";
 
-    if (std::abs(sum1 - sum2) > 1e-6 || std::abs(sum1 - sum3) > 1e-6 || std::abs(sum1 - sum4) > 1e-6) {
+    if (sum1 == sum2 || sum1 == sum3 || sum1 == sum4) {
         std::cerr << "ERROR: Sums do not match!" << std::endl;
     }
 }

@@ -49,7 +49,7 @@ enum class DataType {
 };
 
 // Union data structure with type discrimination
-struct alignas(64) UnionData {
+struct UnionData {
     DataType type;
 
     // Constructors for different types
