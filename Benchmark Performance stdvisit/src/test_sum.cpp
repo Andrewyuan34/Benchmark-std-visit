@@ -1,4 +1,5 @@
 #include "../include/random_generation.h"
+#if TOGGLE_TEST_SUM == true
 #include <iostream>
 #include <variant>
 
@@ -18,7 +19,14 @@ int computeStdGetIfSum() {
     auto variants = generateRandomVariants(dataSize, 42);
     int sum = 0;
     for (const auto& var : variants) {
-#if TYPE_COUNT == 3
+#if TYPE_COUNT == 2
+        if (auto p1 = std::get_if<Type1>(&var)) {
+            sum += p1->get();
+        }
+        else if (auto p2 = std::get_if<Type2>(&var)) {
+            sum += p2->get();
+        }
+#elif TYPE_COUNT == 3
         if (auto p1 = std::get_if<Type1>(&var)) {
             sum += p1->get();
         }
@@ -27,6 +35,129 @@ int computeStdGetIfSum() {
         }
         else if (auto p3 = std::get_if<Type3>(&var)) {
             sum += p3->get();
+        }
+#elif TYPE_COUNT == 4
+        if (auto p1 = std::get_if<Type1>(&var)) {
+            sum += p1->get();
+        }
+        else if (auto p2 = std::get_if<Type2>(&var)) {
+            sum += p2->get();
+        }
+        else if (auto p3 = std::get_if<Type3>(&var)) {
+            sum += p3->get();
+        }
+        else if (auto p4 = std::get_if<Type4>(&var)) {
+            sum += p4->get();
+        }
+#elif TYPE_COUNT == 5
+        if (auto p1 = std::get_if<Type1>(&var)) {
+            sum += p1->get();
+        }
+        else if (auto p2 = std::get_if<Type2>(&var)) {
+            sum += p2->get();
+        }
+        else if (auto p3 = std::get_if<Type3>(&var)) {
+            sum += p3->get();
+        }
+        else if (auto p4 = std::get_if<Type4>(&var)) {
+            sum += p4->get();
+        }
+        else if (auto p5 = std::get_if<Type5>(&var)) {
+            sum += p5->get();
+        }
+#elif TYPE_COUNT == 6
+        if (auto p1 = std::get_if<Type1>(&var)) {
+            sum += p1->get();
+    }
+        else if (auto p2 = std::get_if<Type2>(&var)) {
+            sum += p2->get();
+        }
+        else if (auto p3 = std::get_if<Type3>(&var)) {
+            sum += p3->get();
+        }
+        else if (auto p4 = std::get_if<Type4>(&var)) {
+            sum += p4->get();
+        }
+        else if (auto p5 = std::get_if<Type5>(&var)) {
+            sum += p5->get();
+        }
+        else if (auto p6 = std::get_if<Type6>(&var)) {
+            sum += p6->get();
+        }
+#elif TYPE_COUNT == 7
+        if (auto p1 = std::get_if<Type1>(&var)) {
+            sum += p1->get();
+        }
+        else if (auto p2 = std::get_if<Type2>(&var)) {
+            sum += p2->get();
+        }
+        else if (auto p3 = std::get_if<Type3>(&var)) {
+            sum += p3->get();
+        }
+        else if (auto p4 = std::get_if<Type4>(&var)) {
+            sum += p4->get();
+        }
+        else if (auto p5 = std::get_if<Type5>(&var)) {
+            sum += p5->get();
+        }
+        else if (auto p6 = std::get_if<Type6>(&var)) {
+            sum += p6->get();
+        }
+        else if (auto p7 = std::get_if<Type7>(&var)) {
+            sum += p7->get();
+        }
+#elif TYPE_COUNT == 8
+        if (auto p1 = std::get_if<Type1>(&var)) {
+            sum += p1->get();
+        }
+        else if (auto p2 = std::get_if<Type2>(&var)) {
+            sum += p2->get();
+        }
+        else if (auto p3 = std::get_if<Type3>(&var)) {
+            sum += p3->get();
+        }
+        else if (auto p4 = std::get_if<Type4>(&var)) {
+            sum += p4->get();
+        }
+        else if (auto p5 = std::get_if<Type5>(&var)) {
+            sum += p5->get();
+        }
+        else if (auto p6 = std::get_if<Type6>(&var)) {
+            sum += p6->get();
+        }
+        else if (auto p7 = std::get_if<Type7>(&var)) {
+            sum += p7->get();
+        }
+        else if (auto p8 = std::get_if<Type8>(&var)) {
+            sum += p8->get();
+        }
+#elif TYPE_COUNT == 9
+        if (auto p1 = std::get_if<Type1>(&var)) {
+            sum += p1->get();
+        }
+        else if (auto p2 = std::get_if<Type2>(&var)) {
+            sum += p2->get();
+        }
+        else if (auto p3 = std::get_if<Type3>(&var)) {
+            sum += p3->get();
+        }
+        else if (auto p4 = std::get_if<Type4>(&var)) {
+            sum += p4->get();
+        }
+        else if (auto p5 = std::get_if<Type5>(&var)) {
+            sum += p5->get();
+        }
+        else if (auto p6 = std::get_if<Type6>(&var)) {
+            sum += p6->get();
+        }
+        else if (auto p7 = std::get_if<Type7>(&var)) {
+            sum += p7->get();
+        }
+        else if (auto p8 = std::get_if<Type8>(&var)) {
+            sum += p8->get();
+        }
+        else if (auto p9 = std::get_if<Type9>(&var)) {
+            sum += p9->get();
         }
 #elif TYPE_COUNT == 10
         if (auto p1 = std::get_if<Type1>(&var)) {
@@ -132,7 +263,14 @@ int computeEnumUnionSum() {
     int sum = 0;
     for (const auto& item : data) {
         switch (item.type) {
-#if TYPE_COUNT == 3
+#if TYPE_COUNT == 2
+        case DataType::Type1:
+            sum += item.get();
+            break;
+        case DataType::Type2:
+            sum += item.get();
+            break;
+#elif TYPE_COUNT == 3
         case DataType::Type1:
             sum += item.get();
             break;
@@ -140,6 +278,129 @@ int computeEnumUnionSum() {
             sum += item.get();
             break;
         case DataType::Type3:
+            sum += item.get();
+            break;
+#elif TYPE_COUNT == 4
+        case DataType::Type1:
+            sum += item.get();
+            break;
+        case DataType::Type2:
+            sum += item.get();
+            break;
+        case DataType::Type3:
+            sum += item.get();
+            break;
+        case DataType::Type4:
+            sum += item.get();
+            break;
+#elif TYPE_COUNT == 5
+        case DataType::Type1:
+            sum += item.get();
+            break;
+        case DataType::Type2:
+            sum += item.get();
+            break;
+        case DataType::Type3:
+            sum += item.get();
+            break;
+        case DataType::Type4:
+            sum += item.get();
+            break;
+        case DataType::Type5:
+            sum += item.get();
+            break;
+#elif TYPE_COUNT == 6
+        case DataType::Type1:
+            sum += item.get();
+            break;
+        case DataType::Type2:
+            sum += item.get();
+            break;
+        case DataType::Type3:
+            sum += item.get();
+            break;
+        case DataType::Type4:
+            sum += item.get();
+            break;
+        case DataType::Type5:
+            sum += item.get();
+            break;
+        case DataType::Type6:
+            sum += item.get();
+            break;
+#elif TYPE_COUNT == 7
+        case DataType::Type1:
+            sum += item.get();
+            break;
+        case DataType::Type2:
+            sum += item.get();
+            break;
+        case DataType::Type3:
+            sum += item.get();
+            break;
+        case DataType::Type4:
+            sum += item.get();
+            break;
+        case DataType::Type5:
+            sum += item.get();
+            break;
+        case DataType::Type6:
+            sum += item.get();
+            break;
+        case DataType::Type7:
+            sum += item.get();
+            break;
+#elif TYPE_COUNT == 8
+        case DataType::Type1:
+            sum += item.get();
+            break;
+        case DataType::Type2:
+            sum += item.get();
+            break;
+        case DataType::Type3:
+            sum += item.get();
+            break;
+        case DataType::Type4:
+            sum += item.get();
+            break;
+        case DataType::Type5:
+            sum += item.get();
+            break;
+        case DataType::Type6:
+            sum += item.get();
+            break;
+        case DataType::Type7:
+            sum += item.get();
+            break;
+        case DataType::Type8:
+            sum += item.get();
+            break;
+#elif TYPE_COUNT == 9
+        case DataType::Type1:
+            sum += item.get();
+            break;
+        case DataType::Type2:
+            sum += item.get();
+            break;
+        case DataType::Type3:
+            sum += item.get();
+            break;
+        case DataType::Type4:
+            sum += item.get();
+            break;
+        case DataType::Type5:
+            sum += item.get();
+            break;
+        case DataType::Type6:
+            sum += item.get();
+            break;
+        case DataType::Type7:
+            sum += item.get();
+            break;
+        case DataType::Type8:
+            sum += item.get();
+            break;
+        case DataType::Type9:
             sum += item.get();
             break;
 #elif TYPE_COUNT == 10
@@ -262,8 +523,14 @@ void compareSums() {
     std::cout << "EnumUnion sum: " << sum3 << "\n";
     std::cout << "VirtualCall sum: " << sum4 << "\n";
 
-    if (sum1 == sum2 || sum1 == sum3 || sum1 == sum4) {
-        std::cerr << "ERROR: Sums do not match!" << std::endl;
+    if (sum1 != sum2) {
+        std::cerr << "ERROR: Sum1 and Sum2 do not match!" << "\n";
+    }
+    else if (sum1 != sum3) {
+        std::cerr << "ERROR: Sum1 and Sum3 do not match!" << "\n";
+    }
+    else if (sum1 != sum4) {
+        std::cerr << "ERROR: Sum1 and Sum4 do not match!" << "\n";
     }
 }
 
@@ -271,3 +538,4 @@ int main(int argc, char** argv) {
     compareSums();
     return 0;
 }
+#endif

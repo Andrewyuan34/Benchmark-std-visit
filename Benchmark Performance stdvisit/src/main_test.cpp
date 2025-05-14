@@ -1,13 +1,14 @@
 #ifdef _WIN32
 #pragma comment ( lib, "Shlwapi.lib" )
 #ifdef _DEBUG
-#pragma comment ( lib, "benchmarkd.lib" )
+#pragma comment ( lib, "benchmark.lib" )
 #else
 #pragma comment ( lib, "benchmark.lib" )
 #endif
 #endif
 #include <benchmark/benchmark.h>
 #include "../include/random_generation.h"
+#if TOGGLE_TEST_SUM == false
 
 static constexpr size_t dataSize = 10'000'000;
 
@@ -32,7 +33,14 @@ static void BM_StdGetIf(benchmark::State& state) {
     for (auto _ : state) {
         int sum = 0;
         for (const auto& var : variants) {
-#if TYPE_COUNT == 3
+#if TYPE_COUNT == 2
+            if (auto p1 = std::get_if<Type1>(&var)) {
+                sum += p1->get();
+            }
+            else if (auto p2 = std::get_if<Type2>(&var)) {
+                sum += p2->get();
+            }
+#elif TYPE_COUNT == 3
             if (auto p1 = std::get_if<Type1>(&var)) {
                 sum += p1->get();
             }
@@ -41,6 +49,153 @@ static void BM_StdGetIf(benchmark::State& state) {
             }
             else if (auto p3 = std::get_if<Type3>(&var)) {
                 sum += p3->get();
+            }
+#elif TYPE_COUNT == 4
+            if (auto p1 = std::get_if<Type1>(&var)) {
+                sum += p1->get();
+            }
+            else if (auto p2 = std::get_if<Type2>(&var)) {
+                sum += p2->get();
+            }
+            else if (auto p3 = std::get_if<Type3>(&var)) {
+                sum += p3->get();
+            }
+            else if (auto p4 = std::get_if<Type4>(&var)) {
+                sum += p4->get();
+            }
+#elif TYPE_COUNT == 5
+            if (auto p1 = std::get_if<Type1>(&var)) {
+                sum += p1->get();
+            }
+            else if (auto p2 = std::get_if<Type2>(&var)) {
+                sum += p2->get();
+            }
+            else if (auto p3 = std::get_if<Type3>(&var)) {
+                sum += p3->get();
+            }
+            else if (auto p4 = std::get_if<Type4>(&var)) {
+                sum += p4->get();
+            }
+            else if (auto p5 = std::get_if<Type5>(&var)) {
+                sum += p5->get();
+            }
+#elif TYPE_COUNT == 6
+            switch (var.index()) {
+            case 0:
+                sum += std::get_if<Type1>(&var)->get();
+                break;
+            case 1:
+                sum += std::get_if<Type2>(&var)->get();
+                break;
+            case 2:
+                sum += std::get_if<Type3>(&var)->get();
+                break;
+            case 3:
+                sum += std::get_if<Type4>(&var)->get();
+                break;
+            case 4:
+                sum += std::get_if<Type5>(&var)->get();
+                break;
+            case 5:
+                sum += std::get_if<Type6>(&var)->get();
+                break;
+            default:
+                break;
+            }
+            /*
+            if (auto p1 = std::get_if<Type1>(&var)) {
+                sum += p1->get();
+            }
+            else if (auto p2 = std::get_if<Type2>(&var)) {
+                sum += p2->get();
+            }
+            else if (auto p3 = std::get_if<Type3>(&var)) {
+                sum += p3->get();
+            }
+            else if (auto p4 = std::get_if<Type4>(&var)) {
+                sum += p4->get();
+            }
+            else if (auto p5 = std::get_if<Type5>(&var)) {
+                sum += p5->get();
+            }
+            else if (auto p6 = std::get_if<Type6>(&var)) {
+                sum += p6->get();
+            }
+            */
+#elif TYPE_COUNT == 7
+            if (auto p1 = std::get_if<Type1>(&var)) {
+                sum += p1->get();
+            }
+            else if (auto p2 = std::get_if<Type2>(&var)) {
+                sum += p2->get();
+            }
+            else if (auto p3 = std::get_if<Type3>(&var)) {
+                sum += p3->get();
+            }
+            else if (auto p4 = std::get_if<Type4>(&var)) {
+                sum += p4->get();
+            }
+            else if (auto p5 = std::get_if<Type5>(&var)) {
+                sum += p5->get();
+            }
+            else if (auto p6 = std::get_if<Type6>(&var)) {
+                sum += p6->get();
+            }
+            else if (auto p7 = std::get_if<Type7>(&var)) {
+                sum += p7->get();
+            }
+#elif TYPE_COUNT == 8
+            if (auto p1 = std::get_if<Type1>(&var)) {
+                sum += p1->get();
+            }
+            else if (auto p2 = std::get_if<Type2>(&var)) {
+                sum += p2->get();
+            }
+            else if (auto p3 = std::get_if<Type3>(&var)) {
+                sum += p3->get();
+            }
+            else if (auto p4 = std::get_if<Type4>(&var)) {
+                sum += p4->get();
+            }
+            else if (auto p5 = std::get_if<Type5>(&var)) {
+                sum += p5->get();
+            }
+            else if (auto p6 = std::get_if<Type6>(&var)) {
+                sum += p6->get();
+            }
+            else if (auto p7 = std::get_if<Type7>(&var)) {
+                sum += p7->get();
+            }
+            else if (auto p8 = std::get_if<Type8>(&var)) {
+                sum += p8->get();
+            }
+#elif TYPE_COUNT == 9
+            if (auto p1 = std::get_if<Type1>(&var)) {
+                sum += p1->get();
+            }
+            else if (auto p2 = std::get_if<Type2>(&var)) {
+                sum += p2->get();
+            }
+            else if (auto p3 = std::get_if<Type3>(&var)) {
+                sum += p3->get();
+            }
+            else if (auto p4 = std::get_if<Type4>(&var)) {
+                sum += p4->get();
+            }
+            else if (auto p5 = std::get_if<Type5>(&var)) {
+                sum += p5->get();
+            }
+            else if (auto p6 = std::get_if<Type6>(&var)) {
+                sum += p6->get();
+            }
+            else if (auto p7 = std::get_if<Type7>(&var)) {
+                sum += p7->get();
+            }
+            else if (auto p8 = std::get_if<Type8>(&var)) {
+                sum += p8->get();
+            }
+            else if (auto p9 = std::get_if<Type9>(&var)) {
+                sum += p9->get();
             }
 #elif TYPE_COUNT == 10
             if (auto p1 = std::get_if<Type1>(&var)) {
@@ -150,7 +305,14 @@ static void BM_EnumUnion(benchmark::State& state) {
         int sum = 0;
         for (const auto& item : data) {
             switch (item.type) {
-#if TYPE_COUNT == 3
+#if TYPE_COUNT == 2
+            case DataType::Type1:
+                sum += item.get();
+                break;
+            case DataType::Type2:
+                sum += item.get();
+                break;
+#elif TYPE_COUNT == 3
             case DataType::Type1:
                 sum += item.get();
                 break;
@@ -160,7 +322,137 @@ static void BM_EnumUnion(benchmark::State& state) {
             case DataType::Type3:
                 sum += item.get();
                 break;
-            }
+#elif TYPE_COUNT == 4
+            case DataType::Type1:
+                sum += item.get();
+                break;
+            case DataType::Type2:
+                sum += item.get();
+                break;
+            case DataType::Type3:
+                sum += item.get();
+                break;
+            case DataType::Type4:
+                sum += item.get();
+                break;
+#elif TYPE_COUNT == 5
+            case DataType::Type1:
+                sum += item.get();
+                break;
+            case DataType::Type2:
+                sum += item.get();
+                break;
+            case DataType::Type3:
+                sum += item.get();
+                break;
+            case DataType::Type4:
+                sum += item.get();
+                break;
+            case DataType::Type5:
+                sum += item.get();
+                break;
+#elif TYPE_COUNT == 6
+            case DataType::Type1:
+                sum += item.get();
+                break;
+            case DataType::Type2:
+                sum += item.get();
+                break;
+            case DataType::Type3:
+                sum += item.get();
+                break;
+            case DataType::Type4:
+                sum += item.get();
+                break;
+            case DataType::Type5:
+                sum += item.get();
+                break;
+            case DataType::Type6:
+                sum += item.get();
+                break;
+                /*
+            if (item.type == DataType::Type1) sum += item.get();
+            else if (item.type == DataType::Type2) sum += item.get();
+            else if (item.type == DataType::Type3) sum += item.get();
+            else if (item.type == DataType::Type4) sum += item.get();
+            else if (item.type == DataType::Type5) sum += item.get();
+            else if (item.type == DataType::Type6) sum += item.get();
+                */
+#elif TYPE_COUNT == 7
+            case DataType::Type1:
+                sum += item.get();
+                break;
+            case DataType::Type2:
+                sum += item.get();
+                break;
+            case DataType::Type3:
+                sum += item.get();
+                break;
+            case DataType::Type4:
+                sum += item.get();
+                break;
+            case DataType::Type5:
+                sum += item.get();
+                break;
+            case DataType::Type6:
+                sum += item.get();
+                break;
+            case DataType::Type7:
+                sum += item.get();
+                break;
+#elif TYPE_COUNT == 8
+            case DataType::Type1:
+                sum += item.get();
+                break;
+            case DataType::Type2:
+                sum += item.get();
+                break;
+            case DataType::Type3:
+                sum += item.get();
+                break;
+            case DataType::Type4:
+                sum += item.get();
+                break;
+            case DataType::Type5:
+                sum += item.get();
+                break;
+            case DataType::Type6:
+                sum += item.get();
+                break;
+            case DataType::Type7:
+                sum += item.get();
+                break;
+            case DataType::Type8:
+                sum += item.get();
+                break;
+#elif TYPE_COUNT == 9
+            case DataType::Type1:
+                sum += item.get();
+                break;
+            case DataType::Type2:
+                sum += item.get();
+                break;
+            case DataType::Type3:
+                sum += item.get();
+                break;
+            case DataType::Type4:
+                sum += item.get();
+                break;
+            case DataType::Type5:
+                sum += item.get();
+                break;
+            case DataType::Type6:
+                sum += item.get();
+                break;
+            case DataType::Type7:
+                sum += item.get();
+                break;
+            case DataType::Type8:
+                sum += item.get();
+                break;
+            case DataType::Type9:
+                sum += item.get();
+                break;
 #elif TYPE_COUNT == 10
             case DataType::Type1:
                 sum += item.get();
@@ -192,7 +484,6 @@ static void BM_EnumUnion(benchmark::State& state) {
             case DataType::Type10:
                 sum += item.get();
                 break;
-            }
 #elif TYPE_COUNT == 20
             case DataType::Type1:
                 sum += item.get();
@@ -254,14 +545,14 @@ static void BM_EnumUnion(benchmark::State& state) {
             case DataType::Type20:
                 sum += item.get();
                 break;
-            }
 #else
 #error "Unsupported TYPE_COUNT. Please set TYPE_COUNT to 3, 10, or 20."
 #endif
 
+            }
+            benchmark::DoNotOptimize(sum);
+            }
         }
-        benchmark::DoNotOptimize(sum);
-    }
     state.SetItemsProcessed(state.iterations() * dataSize);
 }
 
@@ -280,23 +571,25 @@ static void BM_VirtualCall(benchmark::State& state) {
 
 // Register all benchmarks
 BENCHMARK(BM_StdVisit)
-->Repetitions(10)
+->Repetitions(2)
 ->ReportAggregatesOnly(true)
 ->Unit(benchmark::kMillisecond);
 
 BENCHMARK(BM_StdGetIf)
-->Repetitions(10)
+->Repetitions(2)
 ->ReportAggregatesOnly(true)
 ->Unit(benchmark::kMillisecond);
 
 BENCHMARK(BM_EnumUnion)
-->Repetitions(10)
+->Repetitions(2)
 ->ReportAggregatesOnly(true)
 ->Unit(benchmark::kMillisecond);
 
 BENCHMARK(BM_VirtualCall)
-->Repetitions(10)
+->Repetitions(2)
 ->ReportAggregatesOnly(true)
 ->Unit(benchmark::kMillisecond);
 
 BENCHMARK_MAIN();
+
+#endif 
