@@ -571,22 +571,22 @@ static void BM_VirtualCall(benchmark::State& state) {
 
 // Register all benchmarks
 BENCHMARK(BM_StdVisit)
-->Repetitions(2)
+->Repetitions(10)
 ->ReportAggregatesOnly(true)
 ->Unit(benchmark::kMillisecond);
 
 BENCHMARK(BM_StdGetIf)
-->Repetitions(2)
+->Repetitions(10)
 ->ReportAggregatesOnly(true)
 ->Unit(benchmark::kMillisecond);
 
 BENCHMARK(BM_EnumUnion)
-->Repetitions(2)
+->Repetitions(10)
 ->ReportAggregatesOnly(true)
 ->Unit(benchmark::kMillisecond);
 
 BENCHMARK(BM_VirtualCall)
-->Repetitions(2)
+->Repetitions(10)
 ->ReportAggregatesOnly(true)
 ->Unit(benchmark::kMillisecond);
 
