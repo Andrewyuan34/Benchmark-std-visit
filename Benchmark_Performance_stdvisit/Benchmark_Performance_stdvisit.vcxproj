@@ -22,7 +22,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{ce12fa59-33fb-4c0e-b7af-a75e9edbd76b}</ProjectGuid>
-    <RootNamespace>BenchmarkPerformancestdvisit</RootNamespace>
+    <RootNamespace>Benchmark_Performance_stdvisit</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
