@@ -102,26 +102,6 @@ static void BM_StdGetIf(benchmark::State& state) {
             default:
                 break;
             }
-            /*
-            if (auto p1 = std::get_if<Type1>(&var)) {
-                sum += p1->get();
-            }
-            else if (auto p2 = std::get_if<Type2>(&var)) {
-                sum += p2->get();
-            }
-            else if (auto p3 = std::get_if<Type3>(&var)) {
-                sum += p3->get();
-            }
-            else if (auto p4 = std::get_if<Type4>(&var)) {
-                sum += p4->get();
-            }
-            else if (auto p5 = std::get_if<Type5>(&var)) {
-                sum += p5->get();
-            }
-            else if (auto p6 = std::get_if<Type6>(&var)) {
-                sum += p6->get();
-            }
-            */
 #elif TYPE_COUNT == 7
             if (auto p1 = std::get_if<Type1>(&var)) {
                 sum += p1->get();
@@ -370,14 +350,6 @@ static void BM_EnumUnion(benchmark::State& state) {
             case DataType::Type6:
                 sum += item.get();
                 break;
-                /*
-            if (item.type == DataType::Type1) sum += item.get();
-            else if (item.type == DataType::Type2) sum += item.get();
-            else if (item.type == DataType::Type3) sum += item.get();
-            else if (item.type == DataType::Type4) sum += item.get();
-            else if (item.type == DataType::Type5) sum += item.get();
-            else if (item.type == DataType::Type6) sum += item.get();
-                */
 #elif TYPE_COUNT == 7
             case DataType::Type1:
                 sum += item.get();

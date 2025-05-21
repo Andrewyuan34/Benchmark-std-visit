@@ -30,40 +30,31 @@ struct Type1 {
     explicit Type1(int value);
     int value_;
     int get() const; 
-    //int index();
 };
 struct Type2 {
     explicit Type2(int value);
     int value_;
     int get() const;
-    //int index();
 };
 struct Type3 {
     explicit Type3(int value);
     int value_;
     int get() const;
-    //int index();
-
 };
 struct Type4 {
     explicit Type4(int value);
     int value_;
     int get() const;
-    //int index();
-
 };
 struct Type5 {
     explicit Type5(int value);
     int value_;
     int get() const;
-    //int index();
-
 };
 struct Type6 {
     explicit Type6(int value);
     int value_;
     int get() const;
-    //int index();
 };
 struct Type7 {
     explicit Type7(int value);

@@ -3,23 +3,11 @@
 
 #if DATA_MEMBER == false
 int Type1::get() const { return 1; }
-//int Type1::index() { return 0; }
-
 int Type2::get() const { return 2; }
-//int Type2::index() { return 1; }
-
 int Type3::get() const { return 3; }
-//int Type3::index() { return 2; }
-
 int Type4::get() const { return 4; }
-//int Type4::index() { return 3; }
-
 int Type5::get() const { return 5; }
-//int Type5::index() { return 4; }
-
 int Type6::get() const { return 6; }
-//int Type6::index() { return 5; }
-
 int Type7::get() const { return 7; }
 int Type8::get() const { return 8; }
 int Type9::get() const { return 9; }
@@ -43,9 +31,7 @@ int Type1::get() const {
 		sum += var;
 	}
 	return (9 + value_ + sum);
-	//return (1 + value_); }
 }
-//int Type1::index() { return 0; }
 
 Type2::Type2(int value) : value_(value) {}
 int Type2::get() const {
@@ -55,69 +41,42 @@ int Type2::get() const {
 		sum += var;
 	}
 	return (5 + value_ + sum);
-	//return (1 + value_); 
 }
-//int Type2::index() { return 1; }
 
 Type3::Type3(int value) : value_(value) {}
 int Type3::get() const { return (1 + value_); }
-//int Type3::index() { return 2; }
 
 Type4::Type4(int value) : value_(value) {}
 int Type4::get() const { return (1 + value_); }
-//int Type4::index() { return 3; }
 
 Type5::Type5(int value) : value_(value) {}
-int Type5::get() const {
-	/*std::vector<int> a{1, 2, 23, 432423, 432423};
-	int sum = 0;
-	for (const int var : a) {
-		sum += var;
-	}
-	return (5 + value_ + sum); */
-	return (1 + value_);
-}
-//int Type5::index() { return 4; }
+int Type5::get() const { return (1 + value_);}
+
 #elif DATA_MEMBER == true
 Type1::Type1(int value) : value_(value) {}
 int Type1::get() const { 
-	/*std::vector<int> a{1, 2, 23, 432423, 432423, 213213, 1, 32, 324, 4243, 4321421, 242222, 32323};
+	std::vector<int> a{1, 2, 23, 432423, 432423, 213213, 1, 32, 324, 4243, 4321421, 242222, 32323};
 	int sum = 0;
 	for (const int var : a) {
 		sum += var;
 	}
-	return (9 + value_ + sum);*/
-	return (1 + value_); 
+	return (9 + value_ + sum);
 	}
-//int Type1::index() { return 0; }
 
 Type2::Type2(int value) : value_(value) {}
 int Type2::get() const { return (1 + value_); }
-//int Type2::index() { return 1; }
 
 Type3::Type3(int value) : value_(value) {}
-int Type3::get() const { 
-	/*std::vector<int> a{1, 2, 23, 4333, 423, 213213, 1, 32, 324, 4243, 41421, 2222};
-	int sum = 0;
-	for (const int var : a) {
-		sum += var;
-	}
-	return (1 + value_ + sum);*/
-	return (1 + value_); 
-	}
-//int Type3::index() { return 2; }
+int Type3::get() const { return (1 + value_);}
 
 Type4::Type4(int value) : value_(value) {}
 int Type4::get() const { return (1 + value_); }
-//int Type4::index() { return 3; }
 
 Type5::Type5(int value) : value_(value) {}
 int Type5::get() const { return (1 + value_); }
-//int Type5::index() { return 4; }
 
 Type6::Type6(int value) : value_(value) {}
 int Type6::get() const { return (1 + value_); }
-//int Type6::index() { return 5; }
 
 Type7::Type7(int value) : value_(value) {}
 int Type7::get() const { return (1 + value_); }
